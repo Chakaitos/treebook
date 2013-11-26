@@ -17,6 +17,9 @@ class User < ActiveRecord::Base
                              with: /a-zA-Z0-9_-/,
                              message: 'Must be formatted correctly.'
                            }
+  validates :email, presence: true
+  validates :password, presence: true
+  validates :password_confirmation, presence: true                      
 
   has_many :statuses
 
