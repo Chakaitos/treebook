@@ -12,11 +12,11 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :profile_name, presence: true, 
-                           uniqueness: true,
-                           format: {
-                             with: /a-zA-Z0-9_-/,
-                             message: 'Must be formatted correctly.'
-                           }
+                           uniqueness: true
+                           #format: {
+                           #with: /a-zA-Z0-9_-/,
+                           #message: 'Must be formatted correctly.'
+                           #}
   validates :email, presence: true
   validates :password, presence: true
   validates :password_confirmation, presence: true                      
