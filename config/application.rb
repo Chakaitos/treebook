@@ -60,6 +60,6 @@ module Treebook
     config.assets.version = '1.0'
 
     # Setting for deployment on Heroku (devise)
-    config.assets.initialize_on_precompile = true
+    config.assets.initialize_on_precompile = false
   end
 end
