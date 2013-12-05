@@ -1,3 +1,8 @@
 one:
   user: chakaitos
   friend: jim
+
+blocked_by_chakaitos:
+  user: chakaitos
+  friend: blocked_friend
+  state: 'blocked'
