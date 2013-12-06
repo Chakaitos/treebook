@@ -6,7 +6,7 @@ class AddAFriendTest < ActionDispatch::IntegrationTest
   end
 
   test "that adding a friend works" do
-    sign_in_as users(:jason), "testing"
+    sign_in_as users(:chakaitos), "testing"
 
     get "/user_friendships/new?friend_id=#{users(:jim).profile_name}"
     assert_response :success
