@@ -11,12 +11,12 @@ class UserFriendshipsControllerTest < ActionController::TestCase
 
     context "when logged in" do
       setup do
-        @pending_friendship   = create(:pending_user_friendship, user: users(:jason), friend: create(:user, first_name: 'Pending', last_name: 'Friend'))
-        @accepted_friendship  = create(:accepted_user_friendship, user: users(:jason), friend: create(:user, first_name: 'Active', last_name: 'Friend'))
-        @requested_friendship = create(:requested_user_friendship, user: users(:jason), friend: create(:user, first_name: 'Requested', last_name: 'Friend'))
-        @blocked_friendship   = user_friendships(:blocked_by_jason)
+        @pending_friendship   = create(:pending_user_friendship, user: users(:chakaitos), friend: create(:user, first_name: 'Pending', last_name: 'Friend'))
+        @accepted_friendship  = create(:accepted_user_friendship, user: users(:chakaitos), friend: create(:user, first_name: 'Active', last_name: 'Friend'))
+        @requested_friendship = create(:requested_user_friendship, user: users(:chakaitos), friend: create(:user, first_name: 'Requested', last_name: 'Friend'))
+        @blocked_friendship   = user_friendships(:blocked_by_chakaitos)
 
-        sign_in users(:jason)
+        sign_in users(:chakaitos)
         get :index
       end
 
@@ -137,7 +137,7 @@ class UserFriendshipsControllerTest < ActionController::TestCase
 
     context "when logged in" do
       setup do
-        sign_in users(:jason)
+        sign_in users(:chakaitos)
       end
 
       should "get new and return success" do
@@ -167,7 +167,7 @@ class UserFriendshipsControllerTest < ActionController::TestCase
 
       should "assign a new user friendship to the currently logged in user" do
         get :new, friend_id: users(:jim)
-        assert_equal users(:jason), assigns(:user_friendship).user
+        assert_equal users(:chakaitos), assigns(:user_friendship).user
       end
 
       should "returns a 404 status if no friend is found" do
@@ -193,7 +193,7 @@ class UserFriendshipsControllerTest < ActionController::TestCase
 
     context "when logged in" do
       setup do
-        sign_in users(:jason)
+        sign_in users(:chakaitos)
       end
 
       context "with no friend_id" do
@@ -230,12 +230,12 @@ class UserFriendshipsControllerTest < ActionController::TestCase
 
         should "assign a user_friendship object" do
           assert assigns(:user_friendship)
-          assert_equal users(:jason), assigns(:user_friendship).user
+          assert_equal users(:chakaitos), assigns(:user_friendship).user
           assert_equal users(:mike), assigns(:user_friendship).friend
         end
 
         should "create a friendship" do
-          assert users(:jason).pending_friends.include?(users(:mike))
+          assert users(:chakaitos).pending_friends.include?(users(:mike))
         end
 
         should "redirect to the profile page of the friend" do
@@ -263,9 +263,9 @@ class UserFriendshipsControllerTest < ActionController::TestCase
     context "when logged in" do
       setup do
         @friend = create(:user)
-        @user_friendship = create(:pending_user_friendship, user: users(:jason), friend: @friend)
-        create(:pending_user_friendship, friend: users(:jason), user: @friend)
-        sign_in users(:jason)
+        @user_friendship = create(:pending_user_friendship, user: users(:chakaitos), friend: @friend)
+        create(:pending_user_friendship, friend: users(:chakaitos), user: @friend)
+        sign_in users(:chakaitos)
         put :accept, id: @user_friendship
         @user_friendship.reload
       end
@@ -295,8 +295,8 @@ class UserFriendshipsControllerTest < ActionController::TestCase
 
     context "when logged in" do
       setup do
-        @user_friendship = create(:pending_user_friendship, user: users(:jason))
-        sign_in users(:jason)
+        @user_friendship = create(:pending_user_friendship, user: users(:chakaitos))
+        sign_in users(:chakaitos)
         get :edit, id: @user_friendship.friend.profile_name
       end
 
@@ -326,10 +326,10 @@ class UserFriendshipsControllerTest < ActionController::TestCase
     context "when logged in" do
       setup do
         @friend = create(:user)
-        @user_friendship = create(:accepted_user_friendship, friend: @friend, user: users(:jason))
-        create(:accepted_user_friendship, friend: users(:jason), user: @friend)
+        @user_friendship = create(:accepted_user_friendship, friend: @friend, user: users(:chakaitos))
+        create(:accepted_user_friendship, friend: users(:chakaitos), user: @friend)
 
-        sign_in users(:jason)
+        sign_in users(:chakaitos)
       end
 
       should "delete user friendships" do
@@ -356,8 +356,8 @@ class UserFriendshipsControllerTest < ActionController::TestCase
 
     context "when logged in" do
       setup do
-        @user_friendship = create(:pending_user_friendship, user: users(:jason))
-        sign_in users(:jason)
+        @user_friendship = create(:pending_user_friendship, user: users(:chakaitos))
+        sign_in users(:chakaitos)
         put :block, id: @user_friendship
         @user_friendship.reload
       end

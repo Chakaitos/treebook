@@ -21,7 +21,7 @@ class StatusesControllerTest < ActionController::TestCase
 
 
   test "should not display blocked user's posts when logged in" do
-    sign_in users(:jason)
+    sign_in users(:chakaitos)
     users(:blocked_friend).statuses.create(content: 'Blocked status')
     users(:jim).statuses.create(content: 'Non-blocked status')
     get :index
@@ -36,7 +36,7 @@ class StatusesControllerTest < ActionController::TestCase
   end
 
   test "should render the new page when logged in" do
-    sign_in users(:jason)
+    sign_in users(:chakaitos)
     get :new
     assert_response :success
   end
@@ -48,7 +48,7 @@ class StatusesControllerTest < ActionController::TestCase
   end
 
   test "should create status when logged in" do
-    sign_in users(:jason)
+    sign_in users(:chakaitos)
 
     assert_difference('Status.count') do
       post :create, status: { content: @status.content }
@@ -58,14 +58,14 @@ class StatusesControllerTest < ActionController::TestCase
   end
 
   test "should create status for the current user when logged in" do
-    sign_in users(:jason)
+    sign_in users(:chakaitos)
 
     assert_difference('Status.count') do
       post :create, status: { content: @status.content, user_id: users(:jim).id }
     end
 
     assert_redirected_to status_path(assigns(:status))
-    assert_equal assigns(:status).user_id, users(:jason).id
+    assert_equal assigns(:status).user_id, users(:chakaitos).id
   end
 
   test "should show status" do
@@ -80,7 +80,7 @@ class StatusesControllerTest < ActionController::TestCase
   end
 
   test "should get edit when logged in" do
-    sign_in users(:jason)
+    sign_in users(:chakaitos)
     get :edit, id: @status
     assert_response :success
   end
@@ -92,30 +92,30 @@ class StatusesControllerTest < ActionController::TestCase
   end
 
   test "should update status when logged in" do
-    sign_in users(:jason)
+    sign_in users(:chakaitos)
     put :update, id: @status, status: { content: @status.content }
     assert_redirected_to status_path(assigns(:status))
   end
 
   test "should update status for the current user when logged in" do
-    sign_in users(:jason)
+    sign_in users(:chakaitos)
     put :update, id: @status, status: { content: @status.content, user_id: users(:jim).id }
     assert_redirected_to status_path(assigns(:status))
-    assert_equal assigns(:status).user_id, users(:jason).id
+    assert_equal assigns(:status).user_id, users(:chakaitos).id
   end
 
   test "should not update the status if nothing has changed" do
-    sign_in users(:jason)
+    sign_in users(:chakaitos)
     put :update, id: @status
     assert_redirected_to status_path(assigns(:status))
-    assert_equal assigns(:status).user_id, users(:jason).id
+    assert_equal assigns(:status).user_id, users(:chakaitos).id
   end
 
 
 
 
   test "should destroy status" do
-    sign_in users(:jason)
+    sign_in users(:chakaitos)
     assert_difference('Status.count', -1) do
       delete :destroy, id: @status
     end
