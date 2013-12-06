@@ -5,20 +5,20 @@
 .status {
 	border-bottom: solid 1px #CCC;
 	padding: 5px 0;
+}
 
-	p {
-		margin: 4px 0;
-	}
+.status p {
+	margin: 4px 0;
+}
 
-	&:hover {
-		background-color: #FAFAFA;
-	}
+.status.hover {
+	background: #FAFAFA;
+}
 
-	.admin {
-		display: none;
-	}
+.status .admin {
+	display: none;
+}
 
-	&:hover .admin {
-		display: inline;
-	}
+.status.hover .admin {
+	display: inline;
 }
