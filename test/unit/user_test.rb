@@ -30,14 +30,14 @@ class UserTest < ActiveSupport::TestCase
 
   test "a user should have a unique profile name" do
     user = User.new
-    user.profile_name = users(:jason).profile_name
+    user.profile_name = users(:chakaitos).profile_name
     
     assert !user.save
     assert !user.errors[:profile_name].empty?
   end
 
   test "a user should have a profile name without spaces" do
-    user = User.new(first_name: 'Jason', last_name: 'Seifer', email: 'jason2@teamtreehouse.com')
+    user = User.new(first_name: 'Jose', last_name: 'Borja', email: 'chakaitos2@teamtreehouse.com')
     user.password = user.password_confirmation = 'asdfasdf'
     user.profile_name = "My Profile With Spaces"
 
@@ -47,36 +47,36 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "a user can have a correctly formatted profile name" do
-    user = User.new(first_name: 'Jason', last_name: 'Seifer', email: 'jason2@teamtreehouse.com')
+    user = User.new(first_name: 'Jose', last_name: 'Borja', email: 'chakaitos2@teamtreehouse.com')
     user.password = user.password_confirmation = 'asdfasdf'
 
-    user.profile_name = 'jasonseifer_1'
+    user.profile_name = 'chakaitos_1'
     assert user.valid?
   end
 
   test "that no error is raised when trying to access a friend list" do
     assert_nothing_raised do
-      users(:jason).friends
+      users(:chakaitos).friends
     end
   end
 
   test "that creating friendships on a user works" do
-    users(:jason).pending_friends << users(:mike)
-    users(:jason).pending_friends.reload
-    assert users(:jason).pending_friends.include?(users(:mike))
+    users(:chakaitos).pending_friends << users(:mike)
+    users(:chakaitos).pending_friends.reload
+    assert users(:chakaitos).pending_friends.include?(users(:mike))
   end
 
   test "that calling to_param on a user returns the profile_name" do
-    assert_equal "jasonseifer", users(:jason).to_param
+    assert_equal "chakaitos", users(:chakaitos).to_param
   end
 
   context "#has_blocked?" do
     should "return true if a user has blocked another user" do
-      assert users(:jason).has_blocked?(users(:blocked_friend))
+      assert users(:chakaitos).has_blocked?(users(:blocked_friend))
     end
 
     should "return false if a user has not blocked another user" do
-      assert !users(:jason).has_blocked?(users(:jim))
+      assert !users(:chakaitos).has_blocked?(users(:jim))
     end
   end
 end
