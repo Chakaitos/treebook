@@ -18,10 +18,10 @@ User.create({
 })
 
 User.create({
-  first_name: "Jason",
-  last_name: "Seifer",
-  profile_name: "jason",
-  email: "jason@teamtreehouse.com",
+  first_name: "Jose",
+  last_name: "Borja",
+  profile_name: "chakaitos",
+  email: "chakaitos@gmail.com",
   password: DEFAULT_INSECURE_PASSWORD,
   password_confirmation: DEFAULT_INSECURE_PASSWORD
 })
@@ -53,13 +53,13 @@ User.create({
   password_confirmation: DEFAULT_INSECURE_PASSWORD
 })
 
-jason = User.find_by_email('jason@teamtreehouse.com')
+chakaitos = User.find_by_email('chakaitos@gmail.com')
 jim   = User.find_by_email('jim@teamtreehouse.com')
 nick  = User.find_by_email('nick@teamtreehouse.com')
 mike  = User.find_by_email('mike@teamtreehouse.com')
 ryan  = User.find_by_email('ryan@teamtreehouse.com')
 
-seed_user = jason
+seed_user = chakaitos
 
 seed_user.statuses.create(content: "Hello, world!")
 jim.statuses.create(content: "Hi, I'm Jim")
