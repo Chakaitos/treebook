@@ -11,6 +11,7 @@ gem 'state_machine'
 gem 'draper'
 gem 'js-routes'
 gem 'paperclip'
+gem 'twitter-bootstrap-rails'
 
 group :development do
 	gem 'thin'
